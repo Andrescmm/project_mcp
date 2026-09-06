@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_project_mcp_audit_log_search" model="ir.ui.view">
+        <field name="name">project.mcp.audit.log.search</field>
+        <field name="model">project.mcp.audit.log</field>
+        <field name="arch" type="xml">
+            <search string="MCP API Audit">
+                <field name="request_id"/>
+                <field name="action"/>
+                <field name="user_id"/>
+                <field name="project_id"/>
+                <field name="task_id"/>
+                <filter name="errors" string="Errors" domain="[('outcome', '=', 'error')]"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_action" string="Action" context="{'group_by': 'action'}"/>
+                    <filter name="group_outcome" string="Outcome" context="{'group_by': 'outcome'}"/>
+                    <filter name="group_day" string="Day" context="{'group_by': 'create_date:day'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_project_mcp_audit_log_tree" model="ir.ui.view">
+        <field name="name">project.mcp.audit.log.tree</field>
+        <field name="model">project.mcp.audit.log</field>
+        <field name="arch" type="xml">
+            <tree string="MCP API Audit" create="false" edit="false" delete="false"
+                  decoration-success="outcome == 'success'" decoration-danger="outcome == 'error'">
+                <field name="create_date"/>
+                <field name="request_id"/>
+                <field name="action"/>
+                <field name="outcome"/>
+                <field name="http_status"/>
+                <field name="user_id"/>
+                <field name="project_id" optional="show"/>
+                <field name="task_id" optional="show"/>
+                <field name="source_ip" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_project_mcp_audit_log_form" model="ir.ui.view">
+        <field name="name">project.mcp.audit.log.form</field>
+        <field name="model">project.mcp.audit.log</field>
+        <field name="arch" type="xml">
+            <form string="MCP API Audit" create="false" edit="false" delete="false">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="create_date"/>
+                            <field name="request_id"/>
+                            <field name="action"/>
+                            <field name="outcome"/>
+                            <field name="http_status"/>
+                        </group>
+                        <group>
+                            <field name="user_id"/>
+                            <field name="project_id"/>
+                            <field name="task_id"/>
+                            <field name="source_ip"/>
+                            <field name="user_agent"/>
+                        </group>
+                    </group>
+                    <group string="Metadata">
+                        <field name="details"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_project_mcp_audit_log" model="ir.actions.act_window">
+        <field name="name">MCP API Audit</field>
+        <field name="res_model">project.mcp.audit.log</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_project_mcp_audit_log_search"/>
+        <field name="context">{'search_default_group_day': 1}</field>
+    </record>
+
+    <menuitem id="menu_project_mcp_audit_log"
+              name="MCP API Audit"
+              parent="project.menu_project_config"
+              action="action_project_mcp_audit_log"
+              groups="project.group_project_manager"
+              sequence="90"/>
+</odoo>

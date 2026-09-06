@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="group_project_mcp_user" model="res.groups">
+        <field name="name">Project MCP API</field>
+        <field name="category_id" ref="base.module_category_hidden"/>
+        <field name="implied_ids" eval="[(4, ref('project.group_project_user'))]"/>
+        <field name="comment">Users in this group may authenticate to the restricted Project MCP REST API. Normal Project ACLs and record rules still apply.</field>
+    </record>
+</odoo>
+

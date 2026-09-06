@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_users_preferences_project_mcp" model="ir.ui.view">
+        <field name="name">res.users.preferences.project.mcp</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form_simple_modif"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='api_key_wizard']" position="after">
+                <button name="project_mcp_api_key_wizard"
+                        string="New Project MCP Key"
+                        type="object"
+                        class="btn btn-secondary ms-2"
+                        groups="project_mcp.group_project_mcp_user"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="form_project_mcp_key_description" model="ir.ui.view">
+        <field name="name">Project MCP API key description</field>
+        <field name="model">project.mcp.apikey.description</field>
+        <field name="arch" type="xml">
+            <form string="New Project MCP API Key">
+                <sheet>
+                    <h3 class="fw-bold">Name your Project MCP key</h3>
+                    <p>This scoped key works only with the Project MCP REST endpoints. It is not accepted as a general RPC key.</p>
+                    <field name="name" placeholder="e.g. Claude Code on development laptop"/>
+                    <footer>
+                        <button name="make_key" type="object" string="Generate key" class="btn-primary" data-hotkey="q"/>
+                        <button special="cancel" string="Cancel" class="btn-secondary" data-hotkey="x"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="form_project_mcp_key_show" model="ir.ui.view">
+        <field name="name">Show Project MCP API key</field>
+        <field name="model">project.mcp.apikey.show</field>
+        <field name="arch" type="xml">
+            <form string="Project MCP API Key Ready">
+                <sheet>
+                    <h3 class="fw-bold">Copy your key now</h3>
+                    <p><code><field name="key" readonly="1"/></code></p>
+                    <p class="alert alert-warning" role="alert">
+                        The key cannot be retrieved later. Store it in a secret manager or environment variable; never commit it to source control.
+                    </p>
+                    <footer>
+                        <button special="cancel" string="Done"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
+

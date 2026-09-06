@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_project_mcp_audit_manager,project.mcp.audit.log manager,model_project_mcp_audit_log,project.group_project_manager,1,0,0,0
+access_project_mcp_key_description,project.mcp.apikey.description,model_project_mcp_apikey_description,group_project_mcp_user,1,1,1,1
+access_project_mcp_key_show,project.mcp.apikey.show,model_project_mcp_apikey_show,group_project_mcp_user,1,1,1,1

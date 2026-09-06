@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_task_form_project_mcp" model="ir.ui.view">
+        <field name="name">project.task.form.project.mcp</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='description_page']" position="after">
+                <page name="project_mcp_page" string="AI / MCP" groups="project_mcp.group_project_mcp_user,project.group_project_manager">
+                    <group>
+                        <group>
+                            <field name="ai_status"/>
+                            <field name="ai_agent"/>
+                            <field name="ai_started_at"/>
+                            <field name="ai_completed_at"/>
+                            <field name="ai_verified_at"/>
+                        </group>
+                        <group>
+                            <field name="git_branch"/>
+                            <field name="git_commit"/>
+                            <field name="verification_status"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="ai_summary"/>
+                        <field name="verification_notes"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
+

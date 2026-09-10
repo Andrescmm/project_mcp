@@ -8,6 +8,7 @@
                 <field name="request_id"/>
                 <field name="action"/>
                 <field name="user_id"/>
+                <field name="actor_identifier"/>
                 <field name="project_id"/>
                 <field name="task_id"/>
                 <filter name="errors" string="Errors" domain="[('outcome', '=', 'error')]"/>
@@ -32,6 +33,8 @@
                 <field name="outcome"/>
                 <field name="http_status"/>
                 <field name="user_id"/>
+                <field name="actor_identifier" optional="show"/>
+                <field name="actor_name" optional="hide"/>
                 <field name="project_id" optional="show"/>
                 <field name="task_id" optional="show"/>
                 <field name="source_ip" optional="hide"/>
@@ -55,6 +58,8 @@
                         </group>
                         <group>
                             <field name="user_id"/>
+                            <field name="actor_identifier"/>
+                            <field name="actor_name"/>
                             <field name="project_id"/>
                             <field name="task_id"/>
                             <field name="source_ip"/>

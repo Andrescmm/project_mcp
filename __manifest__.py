@@ -1,7 +1,7 @@
 {
     "name": "Project MCP",
     "summary": "Restricted REST API for MCP agents working with Project tasks",
-    "version": "17.0.1.0.0",
+    "version": "17.0.2.0.0",
     "category": "Services/Project",
     "author": "Community",
     "license": "LGPL-3",

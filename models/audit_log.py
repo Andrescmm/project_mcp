@@ -19,6 +19,8 @@ class ProjectMCPAuditLog(models.Model):
     )
     http_status = fields.Integer(required=True, readonly=True)
     user_id = fields.Many2one("res.users", readonly=True, ondelete="set null")
+    actor_identifier = fields.Char(readonly=True, index=True)
+    actor_name = fields.Char(readonly=True)
     project_id = fields.Many2one("project.project", readonly=True, ondelete="set null")
     task_id = fields.Many2one("project.task", readonly=True, ondelete="set null")
     source_ip = fields.Char(readonly=True)

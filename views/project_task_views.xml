@@ -19,15 +19,21 @@
                             <field name="git_branch"/>
                             <field name="git_commit"/>
                             <field name="verification_status"/>
+                            <field name="git_repository"/>
+                            <field name="pull_request_url" widget="url"/>
+                            <field name="deployment_environment"/>
                         </group>
                     </group>
                     <group>
                         <field name="ai_summary"/>
                         <field name="verification_notes"/>
+                        <field name="acceptance_criteria"/>
+                        <field name="test_results"/>
+                        <field name="verification_evidence"/>
+                        <field name="ai_blockers"/>
                     </group>
                 </page>
             </xpath>
         </field>
     </record>
 </odoo>
-
